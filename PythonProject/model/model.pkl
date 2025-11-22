@@ -7,5 +7,5 @@ MODEL_FILE = os.path.join(os.path.dirname(__file__), "..", "model", "model.pkl")
 # Modeli oluştur ve kaydet
 os.makedirs(os.path.dirname(MODEL_FILE), exist_ok=True)
 model = IsolationForest(n_estimators=100)
-model.fit([[0],[1],[2]])  # dummy veri, kendi log verinle değiştir
+model.fit([[0],[1],[2]])  
 joblib.dump(model, MODEL_FILE)
