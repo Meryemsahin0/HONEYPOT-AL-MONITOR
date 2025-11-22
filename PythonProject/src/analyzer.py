@@ -4,7 +4,7 @@ import os
 import pandas as pd
 from datetime import datetime
 from ml_model import load_model, predict_anomaly
-from supabase_client import supabase  # Supabase bağlantısı
+from supabase_client import supabase  
 
 def fetch_connections():
     """
@@ -31,7 +31,7 @@ def analyze_connections():
     for index, row in df.iterrows():
         ip = row.get("ip", "")
         is_anomaly = predict_anomaly(ip)
-        feature_count = row.get("ip_feature", 1)  # basit feature count
+        feature_count = row.get("ip_feature", 1) 
         results.append({
             "ip": ip,
             "feature_count": feature_count,
@@ -39,7 +39,7 @@ def analyze_connections():
             "created_at": datetime.utcnow().isoformat()
         })
 
-    # Supabase analysis tablosuna yaz
+
     for res in results:
         supabase.table("analysis").insert(res).execute()
 
