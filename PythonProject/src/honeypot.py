@@ -23,7 +23,7 @@ def handle_client(conn, addr):
             if not data:
                 break
             payload = data.decode(errors="replace").strip()
-            # Log DATA satırı: DATA <ip> <payload>
+            # Log DATA satırı DATA <ip> <payload> !!!!!!
             log_line(f"DATA {ip} {payload}")
             conn.sendall(b"Permission denied, please try again.\n")
     except Exception as e:
